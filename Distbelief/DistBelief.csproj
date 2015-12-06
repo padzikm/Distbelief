@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actors\DataShard.cs" />
+    <Compile Include="Actors\OutputActor.cs" />
     <Compile Include="Messages\Done.cs" />
     <Compile Include="Messages\DoneFetchingParameters.cs" />
     <Compile Include="Messages\FetchParameters.cs" />

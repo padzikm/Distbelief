@@ -74,9 +74,4 @@ namespace DistBelief.Actors
             });
         }
     }
-
-    public class OutputActor : ReceiveActor
-    {
-        
-    }
 }
