@@ -30,7 +30,8 @@ namespace DistBelief.Actors
         {
             Receive<Gradient>(gradient =>
             {
-                //
+                //update parameter
+                //latestParameter = latestParameter + (g.t * learningRate)
             });
         }
 

@@ -13,7 +13,6 @@ namespace DistBelief.Actors
         public List<double> Activations { get; set; }
         public IActorRef ChildLayer { get; set; }
         public IActorRef ParentLayer { get; set; }
-        public int ShardId { get; set; }
         public int ReplicaId { get; set; }
         public IActorRef OutputActor { get; set; }
 
@@ -30,10 +29,18 @@ namespace DistBelief.Actors
             });
             Receive<ForwardPass>(pass =>
             {
-                //        activatedInput = parentLayer match {
-                //case Some(p) => DenseVector.vertcat(DenseVector(1.0), activationFunction(inputs))
-                //          case _ => inputs
-                //        }
+                if (ChildLayer != null)
+                {
+                    ChildLayer.Tell(pass);
+                }
+                else
+                {
+                    //deltas, gradient and initialize backward pass
+                }
+            });
+            Receive<BackwardPass>(pass =>
+            {
+
             });
 
         }
@@ -51,5 +58,9 @@ namespace DistBelief.Actors
             });
         }
 
+    }
+
+    public class BackwardPass
+    {
     }
 }

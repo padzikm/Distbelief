@@ -21,6 +21,8 @@ namespace DistBelief.Actors
             CreateLayerActors();
             Receive<ReadyToProcess>(process =>
             {
+                foreach (var layer in Layers)
+                    layer.Tell(new FetchParameters());
                 Become(WaitForAllLayerUpdates);
             });
         }
@@ -32,7 +34,7 @@ namespace DistBelief.Actors
             Layers = new IActorRef[layersCount];
             for (int i = 0; i < layersCount; i++)
             {
-                Layers[i] = Context.ActorOf(new Props(typeof (Layer), new[]
+                Layers[i] = Context.ActorOf(new Props(typeof (Layer), new object[]
                 {
                     new Layer
                     {
