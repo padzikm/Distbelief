@@ -13,6 +13,9 @@ namespace DistBelief.Actors
         public List<double> Activations { get; set; }
         public IActorRef ChildLayer { get; set; }
         public IActorRef ParentLayer { get; set; }
+        public int ShardId { get; set; }
+        public int ReplicaId { get; set; }
+        public IActorRef OutputActor { get; set; }
 
         public Layer()
         {

@@ -28,7 +28,10 @@ namespace DistBelief.Actors
 
         private void ReceiveGradient()
         {
-            Receive<Gradient>(gradient => { });
+            Receive<Gradient>(gradient =>
+            {
+                //
+            });
         }
 
         private void ReceiveParameterRequest()
